@@ -3,8 +3,10 @@ from .forms import RegisterUserForm, CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 
-def registerPage(request):
+def homePage(request):
+	return render(request, 'home.html')
 
+def registerPage(request):
     form = CreateUserForm()
     if request.method == 'POST':
     	form = CreateUserForm(request.POST)

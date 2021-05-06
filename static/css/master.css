@@ -1,0 +1,13 @@
+.eventCard  {
+  padding:5%;
+}
+
+.gototop{
+  background-color:#26B8F3;
+}
+
+.widget.clearfix.widget-contact-us{
+  background-image: url('../images/world-map.png'); 
+  background-position: 50% 55px; 
+  background-repeat: no-repeat;
+}
