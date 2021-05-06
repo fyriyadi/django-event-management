@@ -44,12 +44,16 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'account_app',
+    'event_app',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [
