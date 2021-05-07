@@ -10,7 +10,19 @@
 			<span>{{event.event_venue}}</span></br>
 			<span>{{event.event_date}}</span></br>
 			<span>{{event.event_start_time}} - {{event.event_finish_time}}</span>
+            <a href="{% url 'eventregister' event.id %}">Register</a> |
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
 		</div>
+        <div>
+            
+        </div>
 
 	<!-- </div> -->
 </section>

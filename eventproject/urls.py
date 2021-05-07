@@ -28,6 +28,8 @@ urlpatterns = [
     path('logout/', account_app_views.logoutUser, name="logout"),
     path('event/home/', event_app_views.eventPage),
     path('event/<int:id>', event_app_views.eventDetail, name='eventdetail'),
+    path('event/register/<int:id>', event_app_views.eventRegister, name='eventregister'),
+
     path('accounts/', include('account_app.urls')),
     # default django user auth url
     # path('accounts/', include('django.contrib.auth.urls')),

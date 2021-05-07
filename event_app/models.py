@@ -64,4 +64,4 @@ class Participant(models.Model):
     attendance_status = models.BooleanField(default=False, null=True, blank=False)
 
     def __str__(self):
-        return '%s %s' % (self.participant, self.event)
+        return '%s %s' % (self.user, self.event)

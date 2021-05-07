@@ -5,5 +5,8 @@ class EventAdmin(admin.ModelAdmin):
     filter_horizontal = ('event_facilities',)
 
 admin.site.register(Event, EventAdmin)
-admin.site.register(Facility)
-admin.site.register(Trainer)
+admin.site.register([
+    Trainer,
+    Facility,
+    Participant,
+])

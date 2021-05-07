@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from .models import Event, Trainer
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.db import IntegrityError
+from .models import Event, Trainer, Participant
 
 # Create your views here.
 def eventPage(request):
@@ -15,3 +17,14 @@ def eventDetail(request,id):
     trainers = event.event_trainer.all()
 
     return render(request, 'event_app/event_detail.html', {'event' : event, 'facilities' : facilities, 'trainers':trainers,})
+
+
+def eventRegister(request,id):
+    reg_event, created = Participant.objects.get_or_create(event = Event.objects.get(id=id), user = request.user)
+    if(created):
+        messages.success(request, 'Successfully registered')
+    else:
+        messages.error(request, 'Already registered')
+        return redirect ('eventdetail',id)
+
+
