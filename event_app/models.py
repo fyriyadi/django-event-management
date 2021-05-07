@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 import multiselectfield
 
    
@@ -26,19 +27,19 @@ class Event(models.Model):
     def __str__(self):
         return self.event_name
 
-
 class Facility(models.Model):
-	facility_name = models.CharField(max_length=100, null=True)
+    facility_name = models.CharField(max_length=100, null=True)
+    icon = models.CharField(max_length=20, null=True, default="bookmark")
 
-	def __str__(self):
-		
-		return self.facility_name
+    def __str__(self):
+        return self.facility_name
+
 
 
 
 class Trainer(models.Model):
 	trainer_name = models.CharField(max_length=100, null=True)
-	trainer_photo = models.ImageField(upload_to='static/images/trainer_photos/', null=True, blank=True)
+	trainer_photo = models.ImageField(null=True, blank=True)
 	trainer_title = models.CharField(max_length=100, null=True)
 	trainer_twitter = models.CharField(max_length=200, blank=True, null=True)
 	trainer_linkedin = models.CharField(max_length=200, blank=True, null=True)
@@ -55,3 +56,12 @@ class Trainer(models.Model):
 			url = ''
 		return url
 
+
+class Participant(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
+    payment_status = models.BooleanField(default=False, null=True, blank=False)
+    attendance_status = models.BooleanField(default=False, null=True, blank=False)
+
+    def __str__(self):
+        return '%s %s' % (self.participant, self.event)

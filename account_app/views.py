@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 def homePage(request):
 	return render(request, 'home.html')
 
+
 def registerPage(request):
     form = CreateUserForm()
     if request.method == 'POST':
@@ -42,3 +43,4 @@ def loginPage(request):
 def logoutUser(request):
 	logout(request)
 	return redirect('login')
+

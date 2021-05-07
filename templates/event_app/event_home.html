@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+{% load l10n %}
+{% load humanize %}
+{% block content %}
+
+{% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+{% endif %}
+<section id="page-title" class="page-title-parallax page-title-center text-dark">
+  <div class="page-title">
+    <h1>Event List</h1>
+  </div>
+</section>
+<section class="content">
+	<div class="container">
+
+		<div class="post-content post-modern post-thumbnail">
+      {% for event in events %}
+			<div class="post-item">
+				<div class="post-image">
+					<a href="#">
+						<img alt="" src="{% static 'images/1.jpg' %}">
+					</a>
+				</div>
+				<div class="post-content-details">
+					<div class="post-title">
+						<h3><a href="#">{{event.event_name}}</a></h3>
+					</div>
+					<div class="post-info">
+            <div class="">{{event.event_date}} | {{event.event_start_time}} - {{event.event_finish_time}}</div>
+            <div class="">{{event.event_venue}}</div>
+						<!-- <span class="post-autor">Post by: <a href="#">Alea Grande</a></span> -->
+						<!-- <span class="post-category">in <a href="#">Productivity</a></span> -->
+					</div>
+					<div class="post-description">
+						<p>{{event.event_summary}}</p>
+
+						<div class="post-read-more">
+              <a class="read-more" href="{% url 'eventdetail' event.id %}">Event Detail<i class="fas fa-long-arrow-alt-right"></i></a>
+						</div>
+					</div>
+          <div class="">
+            {{event.event_audience}} | {{event.event_category}}
+          </div>
+				</div>
+
+				<div class="post-meta">
+					<div class="post-date">
+						<span class="post-date-day">{{event.event_date.day}}</span>
+						<span class="post-date-month">{{event.event_date|date:"M"}}</span>
+						<span class="post-date-year">{{event.event_date.year}}</span>
+					</div>
+
+					<div class="post-comments">
+						<a href="#">
+							<i class="fas fa-ticket-alt"></i>
+							<span class="post-comments-number">{{event.ticket_available}}</span>
+						</a>
+					</div>
+					<div class="post-comments">
+						<a href="#">
+							<i class="far fa-money-bill-alt"></i>
+
+              {% localize on %}
+							<span class="post-comments-number">Rp {{event.ticket_price|intcomma}}</span>
+              {% endlocalize %}
+						</a>
+					</div>
+				</div>
+
+			</div>
+      {% endfor %}
+
+
+
+
+			<!-- pagination nav -->
+			<div class="text-center">
+					<div class="pagination-wrap">
+						<ul class="pagination">
+							<li>
+								<a aria-label="Previous" href="#">
+									<span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+
+								</a>
+							</li>
+							<li class="active"><a href="#">1</a>
+							</li>
+							<li><a href="#">2</a>
+							</li>
+							<li class=""><a href="#">3</a>
+							</li>
+							<li><a href="#">4</a>
+							</li>
+							<li><a href="#">5</a>
+							</li>
+							<li>
+								<a aria-label="Next" href="#">
+									<span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+		</div>
+		<!-- END: Blog post-->
+	</div>
+</section>
+
+{% endblock %}

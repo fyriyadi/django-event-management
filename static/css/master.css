@@ -11,3 +11,9 @@
   background-position: 50% 55px; 
   background-repeat: no-repeat;
 }
+
+.page-title-parallax.page-title-center.text-dark{
+  background-image:url('../images/page-title-parallax.jpg' ); 
+  height:100%;
+  width: auto;
+}

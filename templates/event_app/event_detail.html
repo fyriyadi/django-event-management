@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section id="page-title" class="page-title-parallax page-title-center text-dark">
+	<!-- <div class="container"> -->
+		<div class="page-title">
+			<h1>{{event.event_name}}</h1>
+			<!-- <span>{{events.event_summary}}</span> -->
+			<span>{{event.event_venue}}</span></br>
+			<span>{{event.event_date}}</span></br>
+			<span>{{event.event_start_time}} - {{event.event_finish_time}}</span>
+		</div>
+
+	<!-- </div> -->
+</section>
+<section class="no-padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'images/polo-iphone6.png' %}" alt="">
+            </div>
+            <div class="col-md-6">
+                <hr class="space-xlg">
+                <h1 class="text-medium">Tentang Event</h1>
+                <div class="portfolio-client-description">
+                    <p>{{event.event_detail}}</p>
+                    <p>{{event.event_detail}}</p>
+                    <p>{{event.event_detail}}</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="background-image:url(/static/images/page-title-parallax.jpg); height:100%">
+	<div class="container">
+		<div class="heading heading-center">
+			<h2>Fasilitas</h2>
+		</div>
+
+		<div class="row">
+      {% for facility in facilities %}
+			<div class="col-md-4">
+				<div class="icon-box effect medium  center">
+					<div class="icon">
+						<i class="fas fa-{{facility.icon}}"></i>
+                        
+					</div>
+					<h3 style="text-align: center;">{{facility.facility_name}}</h3>
+				</div>
+			</div>
+      {% endfor %}
+		</div>
+	</div>
+
+</section>
+
+<section class="background-grey container-fluid p-t-80 p-b-80">
+   <div class="heading heading-center">
+			<h2>TRAINER</h2>
+			<!-- <span class="lead">Create amaLorem ipsum dolor sit amet, consectetur adipiscing elit.</span> -->
+		</div>
+    <div class="container">
+      {% for trainer in trainers %}
+      <div class="col-md-3" >
+          <div class="featured-box">
+              <div class="image-box" style="border-radius: 10%;">
+                  <img alt="" src="{% static 'images/'%}{{trainer.trainer_photo}}" class="">
+              </div>
+              <div class="image-box-description text-center">
+                  <h4>{{trainer.trainer_name}}</h4>
+
+                  <p class="subtitle">{{trainer.trainer_title}}</p>
+                  <hr class="line">
+
+                  <div class="social-icons social-icons-border m-t-10 text-center"> 
+  							<ul>
+  								<li class="social-facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+  								<li class="social-twitter"><a href="{{trainer.trainer_twitter}}"><i class="fab fa-twitter"></i></a></li>
+  								
+  								<li class="social-linkedin"><a href="{{trainer.trainer_linkedin}}"><i class="fab fa-linkedin-in"></i></a></li>
+  							</ul>
+  						</div>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <hr class="space-xs">
+</section>
+
+{% endblock %}
