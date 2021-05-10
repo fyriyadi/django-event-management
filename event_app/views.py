@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db import IntegrityError
 from .models import Event, Trainer, Participant
+#for authorized page (is_staff)
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 def eventPage(request):
@@ -25,6 +27,12 @@ def eventRegister(request,id):
         messages.success(request, 'Successfully registered')
     else:
         messages.error(request, 'Already registered')
-        return redirect ('eventdetail',id)
+    
+    return redirect ('eventdetail',id)
 
 
+@user_passes_test(lambda user: user.is_staff)
+def eventAttendance(request):
+    participants = Participant.objects.all()
+
+    return render(request, 'event_app/admin/participant.html', {'participants':participants})
