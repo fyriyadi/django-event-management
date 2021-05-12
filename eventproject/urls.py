@@ -18,8 +18,13 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from account_app import views as account_app_views
 from event_app import views as event_app_views
+from api_endpoint.views import ParticipantView
 #authorized page
 # from core import views as core_views
+
+#generate token for user
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 urlpatterns = [
    
@@ -28,6 +33,7 @@ urlpatterns = [
     path('register/',account_app_views.registerPage, name="register"),
     path('login/',account_app_views.loginPage, name="login"),
     path('logout/', account_app_views.logoutUser, name="logout"),
+    
     path('event/home/', event_app_views.eventPage),
     path('event/<int:id>', event_app_views.eventDetail, name='eventdetail'),
     path('event/register/<int:id>', event_app_views.eventRegister, name='eventregister'),
@@ -38,4 +44,8 @@ urlpatterns = [
     path('accounts/', include('account_app.urls')),
     # default django user auth url
     # path('accounts/', include('django.contrib.auth.urls')),
+
+    #API Endpoint Paths
+    path('api/participants/',ParticipantView.as_view(), name='test'),
+    path('api/token/', obtain_auth_token, name='gettoken')
 ]
