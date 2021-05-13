@@ -3,31 +3,39 @@
 
 {% block content %}
 <section id="page-title" class="page-title-parallax page-title-center text-dark">
-	<!-- <div class="container"> -->
+	<div class="container" style="padding-top: 2em;">
 		<div class="page-title">
 			<h1>{{event.event_name}}</h1>
 			<!-- <span>{{events.event_summary}}</span> -->
-			<span>{{event.event_venue}}</span></br>
-			<span>{{event.event_date}}</span></br>
-			<span>{{event.event_start_time}} - {{event.event_finish_time}}</span>
-            <a href="{% url 'eventregister' event.id %}">Register</a> |
+			<span>{{event.event_venue}}</span> </br>
+			<span>{{event.event_date}}</span> </br>
+			<span>{{event.event_start_time}} - {{event.event_finish_time}}</span> </br>
+            <!-- <a href="{% url 'eventregister' event.id %}">Register</a> | -->
+            
+          
+            <form method="post" action="{% url 'eventregister' event.id %}">
+                {% csrf_token %}
+                <input class="btn btn-primary" type="submit" value="Register" />
+            </form>
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                 {% endfor %}
             </ul>
-            {% endif %}
-
+        {% endif %}
 		</div>
         <div>
             
         </div>
 
-	<!-- </div> -->
+	</div>
 </section>
 <section class="no-padding-bottom">
     <div class="container">
+        <div>
+        
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <img src="{% static 'images/polo-iphone6.png' %}" alt="">

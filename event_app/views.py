@@ -5,6 +5,8 @@ from .models import Event, Trainer, Participant
 #for authorized page (is_staff)
 from django.contrib.auth.decorators import user_passes_test
 
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def eventPage(request):
     events = Event.objects.all()
@@ -20,14 +22,14 @@ def eventDetail(request,id):
 
     return render(request, 'event_app/event_detail.html', {'event' : event, 'facilities' : facilities, 'trainers':trainers,})
 
-
+@login_required
 def eventRegister(request,id):
     reg_event, created = Participant.objects.get_or_create(event = Event.objects.get(id=id), user = request.user)
     if(created):
         messages.success(request, 'Successfully registered')
     else:
         messages.error(request, 'Already registered')
-    
+        
     return redirect ('eventdetail',id)
 
 

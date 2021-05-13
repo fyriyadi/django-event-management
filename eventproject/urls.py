@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from account_app import views as account_app_views
 from event_app import views as event_app_views
-from api_endpoint.views import ParticipantView
+from api_endpoint.views import ParticipantView, EventView
 #authorized page
 # from core import views as core_views
 
@@ -46,6 +46,7 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),
 
     #API Endpoint Paths
+    path('api/events/',EventView.as_view(), name='test'),
     path('api/participants/',ParticipantView.as_view(), name='test'),
     path('api/token/', obtain_auth_token, name='gettoken')
 ]

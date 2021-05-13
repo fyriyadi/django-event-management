@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-
+<div class="container" style="min-height: 80vh;">
 {% if user.is_authenticated %}
   <h1>Hi {{ user.username }}!</h1>
   <p><a href="{% url 'logout' %}">Log Out</a></p>
@@ -12,4 +12,5 @@
   <a href="{% url 'login' %}">Log In</a> |
   <a href="{% url 'register' %}">Sign Up</a>
 {% endif %}
+</div>
 {% endblock %}

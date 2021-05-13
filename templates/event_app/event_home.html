@@ -29,7 +29,7 @@
 				</div>
 				<div class="post-content-details">
 					<div class="post-title">
-						<h3><a href="#">{{event.event_name}}</a></h3>
+						<h3><a href="{% url 'eventdetail' event.id %}">{{event.event_name}}</a></h3>
 					</div>
 					<div class="post-info">
             <div class="">{{event.event_date}} | {{event.event_start_time}} - {{event.event_finish_time}}</div>
@@ -57,19 +57,19 @@
 					</div>
 
 					<div class="post-comments">
-						<a href="#">
+						<!-- <a href="#"> -->
 							<i class="fas fa-ticket-alt"></i>
 							<span class="post-comments-number">{{event.ticket_available}}</span>
-						</a>
+						<!-- </a> -->
 					</div>
 					<div class="post-comments">
-						<a href="#">
+						<!-- <a href="#"> -->
 							<i class="far fa-money-bill-alt"></i>
 
               {% localize on %}
 							<span class="post-comments-number">Rp {{event.ticket_price|intcomma}}</span>
               {% endlocalize %}
-						</a>
+						<!-- </a> -->
 					</div>
 				</div>
 

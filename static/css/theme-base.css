@@ -1946,7 +1946,7 @@ body.wide #header.header-fullwidth nav .main-menu .mega-menu-item .dropdown-menu
 #page-title {
     border-bottom: 1px solid #eee;
     clear: both;
-    padding: 40px 0;
+    /* padding: 40px 0; */
     position: relative;
     background-color: #f8f8f8;
 }
@@ -2046,15 +2046,15 @@ body.wide #header.header-fullwidth nav .main-menu .mega-menu-item .dropdown-menu
 
 /*Page title: transparent header*/
 
-#header.header-transparent + .page-title-video,
+/* #header.header-transparent + .page-title-video,
 #header.header-transparent + .page-title-parallax,
 #header.header-light-transparent + .page-title-video,
 #header.header-light-transparent + .page-title-parallax,
 #header.header-dark-transparent + .page-title-video,
-#header.header-dark-transparent + .page-title-parallax {
-    padding-top: 170px;
-    padding-bottom: 80px;
-}
+#header.header-dark-transparent + .page-title-parallax { */
+    /* padding-top: 170px; */
+    /* padding-bottom: 80px; */
+/* } */
 .page-title-parallax {
     border-bottom: 5px solid #eee !important;
 }
